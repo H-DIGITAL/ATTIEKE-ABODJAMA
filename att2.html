@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boutique Shop</title>
+    <link rel="stylesheet" href="attt2.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+
+    <header>
+        <nav class="navbar">
+
+            <div class="logo">
+                VERA ABODJAMA
+            </div>
+            <img src="LOGOatt.jpeg" class="plg">
+
+            <ul class="nav-links">
+               <li><a href="horaire.html">Horaire</a></li>
+                <li><a href="att2.html">Menu</a></li>
+                <li><a href="methode.html">Methode Paiement</a></li>
+                
+            </ul>
+
+        </nav>
+    </header>
+
+    <!-- SECTION PRODUITS -->
+
+    <section class="products">
+
+        <!-- CARD 1 -->
+
+        <div class="card">
+
+            <img src="att400g.jpeg" alt="Produit">
+
+            <h2>ATTIEKE ABODJAMAN</h2>
+
+            <div class="prices">
+                <p>format 400g: 350 FCFA</p>
+            </div>
+
+            
+                 <input type="number" min="1" max="1000" value="1" id="q1">
+            
+
+            <a href="#" class="btn" onclick="commander(this)">commander </a>
+
+        </div>
+
+        <!-- CARD 2 -->
+
+         <div class="card">
+
+            <img src="att1kg.jpeg" alt="Produit">
+
+            <h2>ATTIEKE ABODJAMAN</h2>
+
+            <div class="prices">
+                <p>format 1Kg: 700 FCFA</p>
+            </div>
+
+            
+                 <input type="number" min="1" max="1000" value="1" id="q1">
+            
+
+            <a href="#" class="btn" onclick="commander(this)">commander </a>
+
+        </div>
+
+        <!-- CARD 3 -->
+
+         <div class="card">
+
+            <img src="att250g.jpeg" alt="Produit">
+
+            <h2>ATTIEKE ABODJAMAN</h2>
+
+            <div class="prices">
+                <p>format 250g: 200 FCFA</p>
+            </div>
+
+            
+                 <input type="number" min="1" max="1000" value="1" id="q1">
+            
+
+            <a href="#" class="btn" onclick="commander(this)">commander </a>
+
+        </div>
+
+        <!-- CARD 4 -->
+
+        <div class="card">
+
+            <img src="sacatt.jpeg" alt="Produit">
+
+            <h2>ATTIEKE ABODJAMAN</h2>
+
+            <div class="prices">
+                <p>format sac 400g x 50: 17500 FCFA</p>
+            </div>
+
+            
+                 <input type="number" min="1" max="1000" value="1" id="q1">
+            
+
+            <a href="#" class="btn" onclick="commander(this)">commander </a>
+
+        </div>
+
+
+        <!-- CARD 5 -->
+
+         <div class="card">
+
+            <img src="600g.jpeg" alt="Produit">
+
+            <h2>ATTIEKE ABODJAMAN</h2>
+
+            <div class="prices">
+                <p>format 600g : 500F CFA</p>
+            </div>
+
+            
+                 <input type="number" min="1" max="1000" value="1" id="q1">
+            
+
+            <a href="#" class="btn" onclick="commander(this)">commander </a>
+
+        </div>
+
+        <!-- CARD 6 -->
+
+         <div class="card">
+
+            <img src="plf.jpeg" alt="Produit">
+
+            <h2>PLACALI FRAIS</h2>
+
+            <div class="prices">
+                <p>200F/boule</p><br>
+                <p>100 boule a 20000F CFA</p><br>
+
+            </div>
+
+            
+                 <input type="number" min="1" max="1000" value="1" id="q1">
+            
+
+            <a href="#" class="btn" onclick="commander(this)">commander </a>
+
+        </div>
+
+
+<!--card7 -->
+
+
+
+        <div class="card">
+
+            <img src="plp.jpeg" alt="Produit">
+
+            <h2>PLACALI PREPARE</h2>
+
+            <div class="prices">
+                <p>100F / boule</p><br>
+                <p>100 boule a 10000F</p>
+            </div>
+
+            
+                 <input type="number" min="1" max="1000" value="1" id="q1">
+            
+
+            <a href="#" class="btn" onclick="commander(this)">commander </a>
+
+        </div>
+        <!--card8 --->
+        <div class="card">
+
+            <img src="atou.jpeg" alt="Produit">
+
+            <h2>ATTOUPKOU</h2>
+
+            <div class="prices">
+                <p>3 a 500F CFA</p><br>
+                <p>65 Sachets a 10000F CFA</p>
+            </div>
+
+            
+                 <input type="number" min="1" max="1000" value="1" id="q1">
+            
+
+            <a href="#" class="btn" onclick="commander(this)">commander </a>
+
+        </div>
+
+         <!-- CARD 9 -->
+
+        <div class="card">
+
+            <img src="sacatt500g.jpeg" alt="Produit">
+
+            <h2>ATTIEKE ABODJAMAN</h2>
+
+            <div class="prices">
+                <p>format sac 500g x 50: 20000 FCFA</p>
+            </div>
+
+            
+                 <input type="number" min="1" max="1000" value="1" id="q1">
+            
+
+            <a href="#" class="btn" onclick="commander(this)">commander </a>
+
+        </div>
+
+    </section>
+   
+
+
+    
+
+     <!-- JS WhatsApp -->
+<script>
+function commander(btn) {
+
+    let card = btn.closest(".card");
+
+    let nom = card.querySelector("h2").innerText;
+    let qte = parseInt(card.querySelector("input").value);
+
+    let prixUnitaire = 0;
+
+    if (card.querySelector(".prices p").innerText.includes("400g: 350")) {
+        prixUnitaire = 350;
+    } 
+    else if (card.querySelector(".prices p").innerText.includes("1Kg: 700")) {
+        prixUnitaire = 700;
+    } 
+    else if (card.querySelector(".prices p").innerText.includes("250g: 200")) {
+        prixUnitaire = 200;
+    } 
+    else if (card.querySelector(".prices p").innerText.includes("17500")) {
+        prixUnitaire = 17500;
+    } 
+    else if (card.querySelector(".prices p").innerText.includes("600g")) {
+        prixUnitaire = 500;
+    } 
+    else if (nom === "PLACALI FRAIS") {
+        prixUnitaire = 200;
+    } 
+    else if (nom === "PLACALI PREPARE") {
+        prixUnitaire = 100;
+    } 
+    else if (nom === "ATTOUPKOU") {
+        prixUnitaire = 200;
+    }
+
+    let total = prixUnitaire * qte;
+
+    let message =
+`Bonjour,
+
+Je souhaite commander :
+
+Produit : ${nom}
+Prix unitaire : ${prixUnitaire} FCFA
+Quantité : ${qte}
+
+TOTAL À PAYER : ${total} FCFA`;
+
+    window.open(
+        "https://wa.me/2250788256074?text=" +
+        encodeURIComponent(message),
+        "_blank"
+    );
+}
+</script>
+</body>
+</html>

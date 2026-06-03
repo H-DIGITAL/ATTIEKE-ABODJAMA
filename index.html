@@ -268,7 +268,9 @@ function commander(btn) {
     let card = btn.closest(".card");
 
     let nom = card.querySelector("h2").innerText;
-    let qte = parseInt(card.querySelector("input").value);
+
+    let qteInput = card.querySelector("input");
+    let qte = qteInput ? parseInt(qteInput.value) : 1;
 
     let prixUnitaire = 0;
 
@@ -295,6 +297,9 @@ function commander(btn) {
     } 
     else if (nom === "ATTOUPKOU") {
         prixUnitaire = 200;
+    } 
+    else if (nom === "ATTIEKE TONNES") {
+        prixUnitaire = 650000;
     }
 
     let total = prixUnitaire * qte;
@@ -305,10 +310,31 @@ function commander(btn) {
 Je souhaite commander :
 
 Produit : ${nom}
-Prix unitaire : ${prixUnitaire} FCFA
+Prix unitaire : ${prixUnitaire} FCFA`;
+
+    if (nom === "ATTIEKE TONNES") {
+
+        let tonnes = Number(card.querySelector("#tonne").value);
+        let format = Number(card.querySelector("#format").value);
+
+        let nbBoules = Math.floor((1000000 * tonnes) / format);
+
+        total = prixUnitaire * tonnes;
+
+        message += `
+Tonnage : ${tonnes} tonne(s)
+Format choisi : ${format} g
+Nombre de boules : ${nbBoules}
+
+TOTAL À PAYER : ${total} FCFA`;
+
+    } else {
+
+        message += `
 Quantité : ${qte}
 
 TOTAL À PAYER : ${total} FCFA`;
+    }
 
     window.open(
         "https://wa.me/2250788256074?text=" +
@@ -316,6 +342,26 @@ TOTAL À PAYER : ${total} FCFA`;
         "_blank"
     );
 }
+
+// Affichage automatique du nombre de boules
+const tonne = document.getElementById("tonne");
+const format = document.getElementById("format");
+const nbBoules = document.getElementById("nbBoules");
+
+function calculerBoules() {
+
+    let tonnes = Number(tonne.value);
+    let poids = Number(format.value);
+
+    let resultat = Math.floor((1000000 * tonnes) / poids);
+
+    nbBoules.innerText = "Nombre de boules : " + resultat;
+}
+
+tonne.addEventListener("change", calculerBoules);
+format.addEventListener("change", calculerBoules);
+
+calculerBoules();
 </script>
 </body>
 </html>

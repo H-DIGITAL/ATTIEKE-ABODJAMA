@@ -291,7 +291,6 @@ function commander(btn) {
 
     let priceText = card.querySelector(".prices p").innerText;
 
-    // FORMAT = on récupère directement dans le texte
     let format = "Non défini";
     let prixUnitaire = 0;
 
@@ -326,14 +325,17 @@ function commander(btn) {
     else if (nom === "ATTOUPKOU") {
         format = "sachet";
         prixUnitaire = 200;
-    } 
+    }
+    else if (nom === "PANIER ABODJAMA") {
+        format = "7Kg";
+        prixUnitaire = 5000;
+    }
     else if (nom === "ATTIEKE TONNES") {
         prixUnitaire = 650000;
     }
 
     let total = prixUnitaire * qte;
 
-    // Calcul du poids total
     let poidsTotal = "Non défini";
 
     if (format === "400g") {
@@ -350,6 +352,9 @@ function commander(btn) {
     } 
     else if (format === "1Kg") {
         poidsTotal = qte + " Kg";
+    }
+    else if (format === "7Kg") {
+        poidsTotal = (7 * qte) + " Kg";
     }
 
     let message =
@@ -391,30 +396,6 @@ TOTAL À PAYER : ${total} FCFA`;
         "https://wa.me/2250788256074?text=" + encodeURIComponent(message),
         "_blank"
     );
-}
-
-
-// TONNES
-const tonne = document.getElementById("tonne");
-const format = document.getElementById("format");
-const nbBoules = document.getElementById("nbBoules");
-
-function calculerBoules() {
-
-    if (!tonne || !format || !nbBoules) return;
-
-    let tonnes = Number(tonne.value);
-    let poids = Number(format.value);
-
-    let resultat = Math.floor((1000000 * tonnes) / poids);
-
-    nbBoules.innerText = "Nombre de boules : " + resultat;
-}
-
-if (tonne && format) {
-    tonne.addEventListener("change", calculerBoules);
-    format.addEventListener("change", calculerBoules);
-    calculerBoules();
 }
 </script>
 </body>
